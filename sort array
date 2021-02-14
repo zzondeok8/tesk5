@@ -11,28 +11,27 @@ int main()
 return 0; 
 }
 
-void sort (int n,int arr[])
+void sort (int n,int *x)
 {
-    int *x = malloc (7* sizeof(int));
-    
-    for (int i = 1; i < n; i++)
+   //오름차순으로 배열안의 숫자들을 정리한다.
+    for(int i=0; i<n; i++)
     {
-        while (i > 0) 
+        for(int j=i+1; j<n; j++)
         {
-            if (arr[i] < arr[i-1])
+            if (*(i+x)>*(x+j))
             {
-                int tmp = arr[i];
-                arr[i] = arr[i-1];
-                arr[i-1] = tmp;
-                i -= 1;
+                int tmp = *(x+i);
+                *(x+i) = *(x+j);
+                *(x+j) = tmp ;
             }
         }
     }
-     for (int j=0; j<n; j++)
+     //정렬된 배열이 있는 주소를 찾아 printf.
+     for (int num=0; num<n; num++)
      {
-         x[j] = arr [j];
-         printf("%d\t", *x);
+         printf("%d\t", *(x+num));
            
      }
-     free(arr);
+      printf("\n");
      }
+     
